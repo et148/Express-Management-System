@@ -1,0 +1,39 @@
+#!application-dev.yml 开发环境配置文件
+server:
+  port: 8090
+  context-path: /express
+debug: false #调试模式
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: com.jing.du.express.config.MysqlConfig
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/express?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root #数据库用户名
+    password: root #密码
+  freemarker:
+    cache: false # Enable template caching.
+    content-type: text/html # Content-Type value.
+    charset: UTF-8 # Template encoding.
+    expose-request-attributes: true # Set whether all request attributes should be added to the model prior to merging with the template.
+    expose-session-attributes: true # Set whether all HttpSession attributes should be added to the model prior to merging with the template.
+    request-context-attribute: request # Name of the RequestContext attribute for all views.
+    settings:
+      number_format: 0.##
+    template-loader-path: classpath:/templates
+  mvc:
+    favicon:
+      enabled: false
+  output:
+    ansi:
+      enabled: detect #控制台多彩输出
+
+logging:
+  level: debug
+  level.top: debug
+  file: log.log
